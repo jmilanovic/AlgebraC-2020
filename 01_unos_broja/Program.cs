@@ -24,7 +24,7 @@ namespace _01_unos_broja
             }
             
 
-            Console.WriteLine("Upisali ste broj {0}.", broj);
+            Console.WriteLine("Upisali ste broj {0:F2}.", broj);
 
             string tekst = Console.ReadLine();
 
