@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>_08_vozila_dll_referenca_na_projekt</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\08_03_vozila\08_03_vozila.csproj" />
+    <ProjectReference Include="..\RazneOsobe\RazneOsobe.csproj" />
+  </ItemGroup>
+
+</Project>

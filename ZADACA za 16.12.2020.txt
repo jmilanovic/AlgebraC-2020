@@ -1,0 +1,25 @@
+// Malo da zaokruzimo svo do sada znanje:
+// Objekti, Liste, Metode, staticke varijable, reference
+
+1. Kreirati objekt Kolac
+2. Program:
+ - Kreiraj objekt Kolac K1 -> "Cokoladna ekstaza"
+ // sastojke dodati u listu unutar kolaca
+ - K1.DodajSastojak("Margarin",200) 
+ - K1.DodajSastojak("Secer",100)
+ - K1.DodajSastojak("Cokolada",300) 
+ - K1.DodajSastojak("Jaje",50) //g
+ - Rerna.Ispeci(ref K1)   // Staticka klasa rerna, ne moze se instancirati
+ - Ponovi sve sa K2
+
+3. Console.Writeline(K1)
+ - Ako je kolac pecen ispisi "kolac je pecen" (boolean)
+ - Ispisi sastojke
+ - Ispisi ukupnu masu kolaca kao zbroj sastojaka ( U KG, NA DVIJE DECIMALE)
+
+
+4. K1.DodajSastojak("Limun",100)
+  - dodaj uvjet, ako je kolac pecen ne dozvoli dodavanje sastojaka
+
+5. Console.Writeline(Rerna.BrojIspecenihKolaca)
+
