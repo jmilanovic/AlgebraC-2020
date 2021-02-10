@@ -95,7 +95,7 @@ namespace _14_Osoba_Zivotinja
 
             //Koristimo ga za usporedbu 2 objekta.
             //Provjeravamo jesu li isti.
-            return 0;  // 1 ako je veci, -1 ako je manji ili 0 ako su isti
+           // return 0;  // 1 ako je veci, -1 ako je manji ili 0 ako su isti
         }
 
         public int CompareTo(object obj)

@@ -1,0 +1,22 @@
+﻿@model string
+@{
+    ViewData["Title"] = "Dog Home Page";
+    Layout = "_LayoutDog";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Vau vau</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div class="text-center">
+    <h3 class="display-4">@Model</h3>
+    <ol> <!--Repeater -->
+        @for (int i = 0; i < (int)@ViewData["NekiBroj"]; i++)
+        {
+        <li>@ViewData["Poruka"], moj broj je: @ViewData["NekiBroj"]</li>
+        }
+
+        
+    </ol>
+</div>

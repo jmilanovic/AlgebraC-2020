@@ -33,6 +33,6 @@ neka promjena
 ##Zadaca za 07.01.2021 (Joker +)
 - Jasmin
 - Ivan Mijatovic
-
+- Filip 
 
 
