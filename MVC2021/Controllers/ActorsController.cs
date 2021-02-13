@@ -10,22 +10,43 @@ using MVC2021.Models;
 
 namespace MVC2021.Controllers
 {
-    public class MoviesController : Controller
+    public class ActorsController : Controller
     {
         private readonly MvcMovieContext _context;
 
-        public MoviesController(MvcMovieContext context)
+        public ActorsController(MvcMovieContext context)
         {
-            _context = context; //connection na bazu
+            _context = context;
         }
 
-        // GET: Movies
+        // GET: Actors
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Movie.OrderByDescending(i=>i.Id).ToListAsync());  // SELECT ALL
+            return View(await _context.Glumci.ToListAsync());
         }
 
-        // GET: Movies/Details/5
+        // GET: Actors/ListaFilmova/5
+        public async Task<IActionResult> ListaFilmova(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var actor = await _context.Glumci
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            var actor_lista_filmova = await _context.Movie.OrderByDescending(i => i.Id).ToListAsync();
+
+            if (actor == null)
+            {
+                return NotFound();
+            }
+           return View("ListaFilmova", actor_lista_filmova);
+           // return View("ListaFilmova", actor);
+        }
+
+        // GET: Actors/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,41 +54,39 @@ namespace MVC2021.Controllers
                 return NotFound();
             }
 
-            var movie = await _context.Movie
+            var actor = await _context.Glumci
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (movie == null)
+            if (actor == null)
             {
                 return NotFound();
             }
 
-            return View(movie);
+            return View(actor);
         }
 
-        // GET: Movies/Create
-        [HttpGet]
+        // GET: Actors/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Movies/Create
+        // POST: Actors/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Country,Price")] Actor actor)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(movie);
+                _context.Add(actor);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Create");
-                //return RedirectToAction(nameof(Index)); // Moze i ovako
+                return RedirectToAction(nameof(Index));
             }
-            return View(movie);
+            return View(actor);
         }
 
-        // GET: Movies/Edit/5
+        // GET: Actors/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,22 +94,22 @@ namespace MVC2021.Controllers
                 return NotFound();
             }
 
-            var movie = await _context.Movie.FindAsync(id);
-            if (movie == null)
+            var actor = await _context.Glumci.FindAsync(id);
+            if (actor == null)
             {
                 return NotFound();
             }
-            return View(movie);
+            return View(actor);
         }
 
-        // POST: Movies/Edit/5
+        // POST: Actors/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]  // ovo se zove annotation
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ReleaseDate,Genre,Price")] Movie movie)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Country,Price")] Actor actor)
         {
-            if (id != movie.Id)
+            if (id != actor.Id)
             {
                 return NotFound();
             }
@@ -99,12 +118,12 @@ namespace MVC2021.Controllers
             {
                 try
                 {
-                    _context.Update(movie);
+                    _context.Update(actor);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MovieExists(movie.Id))
+                    if (!ActorExists(actor.Id))
                     {
                         return NotFound();
                     }
@@ -115,10 +134,10 @@ namespace MVC2021.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(movie);
+            return View(actor);
         }
 
-        // GET: Movies/Delete/5
+        // GET: Actors/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -126,30 +145,30 @@ namespace MVC2021.Controllers
                 return NotFound();
             }
 
-            var movie = await _context.Movie
+            var actor = await _context.Glumci
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (movie == null)
+            if (actor == null)
             {
                 return NotFound();
             }
 
-            return View(movie);
+            return View(actor);
         }
 
-        // POST: Movies/Delete/5
+        // POST: Actors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var movie = await _context.Movie.FindAsync(id);
-            _context.Movie.Remove(movie);
+            var actor = await _context.Glumci.FindAsync(id);
+            _context.Glumci.Remove(actor);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MovieExists(int id)
+        private bool ActorExists(int id)
         {
-            return _context.Movie.Any(e => e.Id == id);
+            return _context.Glumci.Any(e => e.Id == id);
         }
     }
 }

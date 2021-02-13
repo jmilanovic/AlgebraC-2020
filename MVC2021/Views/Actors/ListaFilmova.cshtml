@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MVC2021.Models.Movie>
+@*
+    OVO JE SINTAKSA RAZOR KOMENTARA
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    decimal cijena = 60;
+   //var gl= await Glumci.ToListAsync()
+}
+<div>
+
+    Ovo je neki nas razor view
+    <table>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/91WNnQZdybL._AC_SL1500_.jpg" height="55px" title="@Html.DisplayFor(modelItem => item.Title)" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @if (item.Price < 3)
+                    {
+                        <span style="color:green"> cijena je preniska! </span>
+                    }
+                    else if (item.Price > 4)
+                    {
+                        <span style="color:red"> cijena je previsoka! </span>
+                    }
+                    else
+                    {
+                        <span style="color:blue"> cijena je taman </span>
+                    }
+
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

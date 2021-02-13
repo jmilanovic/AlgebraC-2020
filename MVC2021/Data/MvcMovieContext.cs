@@ -20,5 +20,6 @@ namespace MVC2021.Data
         }
 
         public DbSet<Movie> Movie { get; set; }
+        public DbSet<Actor> Glumci { get; set; }
     }
 }

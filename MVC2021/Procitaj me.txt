@@ -1,0 +1,9 @@
+﻿Koraci za COde first su ovdje:
+https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/adding-model?view=aspnetcore-5.0&tabs=visual-studio#add-a-database-connection-string
+1) kreiraj model
+2) dodaj Dbset u mvcMoviecontex
+3) ->
+
+PM> Add-migration ime_migracije
+PM> Update-Database
+
