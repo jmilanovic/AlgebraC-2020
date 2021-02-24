@@ -200,6 +200,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Prva", "AlgebraMVC2020\Alge
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVC2021", "MVC2021\MVC2021.csproj", "{5EE1A55A-B3C2-4D17-A27D-2495A19FE69B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4_01_vj", "..\..\..\..\Desktop\MVC_vježbe 1 dio\VjezbeMVC\4_01_vj\4_01_vj.csproj", "{122623EA-8C3C-45C2-9EE1-EB60D0CA9597}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fakultet", "Fakultet\Fakultet.csproj", "{CF6F12D5-9103-46D3-AE2D-020443FC7A59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -451,6 +455,14 @@ Global
 		{5EE1A55A-B3C2-4D17-A27D-2495A19FE69B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EE1A55A-B3C2-4D17-A27D-2495A19FE69B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EE1A55A-B3C2-4D17-A27D-2495A19FE69B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{122623EA-8C3C-45C2-9EE1-EB60D0CA9597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{122623EA-8C3C-45C2-9EE1-EB60D0CA9597}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{122623EA-8C3C-45C2-9EE1-EB60D0CA9597}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{122623EA-8C3C-45C2-9EE1-EB60D0CA9597}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF6F12D5-9103-46D3-AE2D-020443FC7A59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF6F12D5-9103-46D3-AE2D-020443FC7A59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF6F12D5-9103-46D3-AE2D-020443FC7A59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF6F12D5-9103-46D3-AE2D-020443FC7A59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

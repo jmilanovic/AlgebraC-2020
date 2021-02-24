@@ -1,0 +1,5 @@
+﻿PM> Scaffold-DbContext "Server=.\SQLExpress;Database=SchoolDB;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+Scaffold-DbContext "Server=.\SQLExpress;Database=faks;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+Data Source=POWERRYZEN\SQLEXPRESS;Initial Catalog=faks;Integrated Security=True
+
+

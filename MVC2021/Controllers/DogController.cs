@@ -23,5 +23,24 @@ namespace MVC2021.Controllers
             string model = "pozdrav svijete iz MVC-a!";
             return View((object)model); //Views/Dog/Pozdrav.cshtml
         }
+
+        /**
+         Kako poslati bilo koji MIME sadrzaj korisniku
+         
+         */
+        // http://localhost:5000/Dog/Ola?NekiBroj=5
+        public IActionResult Ola(int NekiBroj = 1)
+        {
+            // neke varijable koje bacamo na view
+            // ViewData["Poruka"] = "Uplati  mi na racun";
+            //ViewData["NekiBroj"] = NekiBroj;
+
+
+            //string olapozadrav = "pozdrav svijete iz MVC-a! uneseni broj je"+ NekiBroj;
+
+            string olapozadrav= "<p> trsbvbsdbvs</p> ";
+
+            return Content(olapozadrav, "text/xml");
+        }
     }
 }
