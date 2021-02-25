@@ -15,5 +15,8 @@ namespace Fakultet.Models
         public int? BrojSatiTjedno { get; set; }
 
         public virtual Orgjed SifOrgjedNavigation { get; set; }
+
+        // Many 2 Many
+        //public virtual Rezervacija SifPredNavigation { get; set; }
     }
 }

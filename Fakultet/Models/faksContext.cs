@@ -241,8 +241,9 @@ namespace Fakultet.Models
 
             modelBuilder.Entity<Rezervacija>(entity =>
             {
-                entity.HasNoKey();
+                //  entity.HasNoKey();
 
+                entity.HasKey(bc=>new { bc.OznDvorana, bc.SifPred });
                 entity.ToTable("rezervacija");
 
                 entity.Property(e => e.OznDvorana)

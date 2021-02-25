@@ -1,0 +1,210 @@
+﻿USE [master]
+GO
+/****** Object:  Database [BazaPoklona]    Script Date: 5/13/2020 2:19:47 PM ******/
+CREATE DATABASE [BazaPoklona]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'BazaPoklona', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\BazaPoklona.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'BazaPoklona_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\BazaPoklona_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+GO
+ALTER DATABASE [BazaPoklona] SET COMPATIBILITY_LEVEL = 140
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [BazaPoklona].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [BazaPoklona] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [BazaPoklona] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [BazaPoklona] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [BazaPoklona] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [BazaPoklona] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [BazaPoklona] SET AUTO_CLOSE ON 
+GO
+ALTER DATABASE [BazaPoklona] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [BazaPoklona] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [BazaPoklona] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [BazaPoklona] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [BazaPoklona] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [BazaPoklona] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [BazaPoklona] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [BazaPoklona] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [BazaPoklona] SET  ENABLE_BROKER 
+GO
+ALTER DATABASE [BazaPoklona] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [BazaPoklona] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [BazaPoklona] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [BazaPoklona] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [BazaPoklona] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [BazaPoklona] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [BazaPoklona] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [BazaPoklona] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [BazaPoklona] SET  MULTI_USER 
+GO
+ALTER DATABASE [BazaPoklona] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [BazaPoklona] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [BazaPoklona] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [BazaPoklona] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [BazaPoklona] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [BazaPoklona] SET QUERY_STORE = OFF
+GO
+USE [BazaPoklona]
+GO
+/****** Object:  Table [dbo].[Poklon]    Script Date: 5/13/2020 2:19:47 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Poklon](
+	[IdPoklon] [int] IDENTITY(1,1) NOT NULL,
+	[Naziv] [nvarchar](40) NOT NULL,
+	[VrstaRobe] [int] NOT NULL,
+	[Kupljen] [bit] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IdPoklon] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Trgovina]    Script Date: 5/13/2020 2:19:47 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Trgovina](
+	[IdTrgovina] [int] IDENTITY(1,1) NOT NULL,
+	[NazivTrgovina] [nvarchar](40) NOT NULL,
+	[VrstaRobe] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IdTrgovina] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[VrstaRobe]    Script Date: 5/13/2020 2:19:47 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[VrstaRobe](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Naziv] [nvarchar](40) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Poklon] ON 
+GO
+INSERT [dbo].[Poklon] ([IdPoklon], [Naziv], [VrstaRobe], [Kupljen]) VALUES (1, N'Slatkiši(50kn)', 1, 1)
+GO
+INSERT [dbo].[Poklon] ([IdPoklon], [Naziv], [VrstaRobe], [Kupljen]) VALUES (2, N'Slatkiši(75kn)', 1, 0)
+GO
+INSERT [dbo].[Poklon] ([IdPoklon], [Naziv], [VrstaRobe], [Kupljen]) VALUES (3, N'Slatkiši(100kn)', 1, 0)
+GO
+INSERT [dbo].[Poklon] ([IdPoklon], [Naziv], [VrstaRobe], [Kupljen]) VALUES (4, N'M. Patike', 5, 0)
+GO
+INSERT [dbo].[Poklon] ([IdPoklon], [Naziv], [VrstaRobe], [Kupljen]) VALUES (5, N'Ž. Patike', 5, 0)
+GO
+INSERT [dbo].[Poklon] ([IdPoklon], [Naziv], [VrstaRobe], [Kupljen]) VALUES (6, N'M. Trenerka', 2, 0)
+GO
+INSERT [dbo].[Poklon] ([IdPoklon], [Naziv], [VrstaRobe], [Kupljen]) VALUES (7, N'Ž. Trenerka', 2, 0)
+GO
+INSERT [dbo].[Poklon] ([IdPoklon], [Naziv], [VrstaRobe], [Kupljen]) VALUES (8, N'Hennessy', 4, 0)
+GO
+INSERT [dbo].[Poklon] ([IdPoklon], [Naziv], [VrstaRobe], [Kupljen]) VALUES (9, N'Blue Label', 4, 0)
+GO
+INSERT [dbo].[Poklon] ([IdPoklon], [Naziv], [VrstaRobe], [Kupljen]) VALUES (10, N'PS4 Joystick', 7, 0)
+GO
+SET IDENTITY_INSERT [dbo].[Poklon] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Trgovina] ON 
+GO
+INSERT [dbo].[Trgovina] ([IdTrgovina], [NazivTrgovina], [VrstaRobe]) VALUES (1, N'Kaufland', 1)
+GO
+INSERT [dbo].[Trgovina] ([IdTrgovina], [NazivTrgovina], [VrstaRobe]) VALUES (2, N'Lidl', 1)
+GO
+INSERT [dbo].[Trgovina] ([IdTrgovina], [NazivTrgovina], [VrstaRobe]) VALUES (3, N'PolleoSport', 3)
+GO
+INSERT [dbo].[Trgovina] ([IdTrgovina], [NazivTrgovina], [VrstaRobe]) VALUES (4, N'Intersport', 3)
+GO
+INSERT [dbo].[Trgovina] ([IdTrgovina], [NazivTrgovina], [VrstaRobe]) VALUES (5, N'Kik', 2)
+GO
+INSERT [dbo].[Trgovina] ([IdTrgovina], [NazivTrgovina], [VrstaRobe]) VALUES (6, N'Bershka', 2)
+GO
+INSERT [dbo].[Trgovina] ([IdTrgovina], [NazivTrgovina], [VrstaRobe]) VALUES (7, N'Roto', 4)
+GO
+INSERT [dbo].[Trgovina] ([IdTrgovina], [NazivTrgovina], [VrstaRobe]) VALUES (8, N'Teri', 4)
+GO
+INSERT [dbo].[Trgovina] ([IdTrgovina], [NazivTrgovina], [VrstaRobe]) VALUES (9, N'Shooster', 5)
+GO
+INSERT [dbo].[Trgovina] ([IdTrgovina], [NazivTrgovina], [VrstaRobe]) VALUES (10, N'Deichman', 5)
+GO
+INSERT [dbo].[Trgovina] ([IdTrgovina], [NazivTrgovina], [VrstaRobe]) VALUES (11, N'DM', 6)
+GO
+INSERT [dbo].[Trgovina] ([IdTrgovina], [NazivTrgovina], [VrstaRobe]) VALUES (12, N'Bipa', 6)
+GO
+INSERT [dbo].[Trgovina] ([IdTrgovina], [NazivTrgovina], [VrstaRobe]) VALUES (13, N'Centar Tehnike', 7)
+GO
+INSERT [dbo].[Trgovina] ([IdTrgovina], [NazivTrgovina], [VrstaRobe]) VALUES (14, N'Pevex', 8)
+GO
+SET IDENTITY_INSERT [dbo].[Trgovina] OFF
+GO
+SET IDENTITY_INSERT [dbo].[VrstaRobe] ON 
+GO
+INSERT [dbo].[VrstaRobe] ([Id], [Naziv]) VALUES (1, N'Food')
+GO
+INSERT [dbo].[VrstaRobe] ([Id], [Naziv]) VALUES (2, N'Clothes')
+GO
+INSERT [dbo].[VrstaRobe] ([Id], [Naziv]) VALUES (3, N'Sport')
+GO
+INSERT [dbo].[VrstaRobe] ([Id], [Naziv]) VALUES (4, N'Drinks')
+GO
+INSERT [dbo].[VrstaRobe] ([Id], [Naziv]) VALUES (5, N'Shoes')
+GO
+INSERT [dbo].[VrstaRobe] ([Id], [Naziv]) VALUES (6, N'Make-up')
+GO
+INSERT [dbo].[VrstaRobe] ([Id], [Naziv]) VALUES (7, N'Tech')
+GO
+INSERT [dbo].[VrstaRobe] ([Id], [Naziv]) VALUES (8, N'HouseEqp')
+GO
+SET IDENTITY_INSERT [dbo].[VrstaRobe] OFF
+GO
+ALTER TABLE [dbo].[Poklon]  WITH CHECK ADD FOREIGN KEY([VrstaRobe])
+REFERENCES [dbo].[VrstaRobe] ([Id])
+GO
+ALTER TABLE [dbo].[Trgovina]  WITH CHECK ADD FOREIGN KEY([VrstaRobe])
+REFERENCES [dbo].[VrstaRobe] ([Id])
+GO
+USE [master]
+GO
+ALTER DATABASE [BazaPoklona] SET  READ_WRITE 
+GO
