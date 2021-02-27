@@ -1,0 +1,104 @@
+﻿@model IEnumerable<AlgebraSeminar.Models.Seminar>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+
+    <div class="menu" style="background-color:Black;">
+        <div class="wrapper">
+
+            <style>
+                .button {
+                    display: inline-block;
+                    padding: 10px 10px;
+                    text-align: center;
+                    text-decoration: none;
+                    color: white;
+                    background-color: black;
+                    border-radius: 1px;
+                    outline: none;
+                }
+
+                    .button:hover {
+                        background-color: white
+                    }
+
+                    .button:active {
+                        display: inline-block;
+                        padding: 10px 10px;
+                        text-align: center;
+                        text-decoration: none;
+                        color: black;
+                        background-color: white;
+                        border-radius: 6px;
+                    }
+            </style>
+
+            <a class="button" style="text-decoration:none" href="\Predbiljezbas\Predbiljezba">Predbiljezba </a>
+            <a class="button" style="text-decoration:none" href="\Seminars\Seminari">Seminari </a>
+
+
+        </div>
+    </div>
+    <br />
+   
+    <div class="form-group">
+        <a class="button" style="text-decoration:none; background-color:dodgerblue; color:white; border-radius: 10px" href="\Seminars\Create">Novi tecaj</a>
+    </div>
+    <style>
+        table, th, td {
+            border: 1px solid gray;
+            text-align: center;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+    <table style="width:100%">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Naziv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Datum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Popunjen)
+            </th>
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Naziv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Opis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Popunjen)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdSeminar">Uredi</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdSeminar">Obrisi</a>
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
