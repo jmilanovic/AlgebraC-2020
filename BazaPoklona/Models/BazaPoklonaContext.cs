@@ -29,7 +29,7 @@ namespace BazaPoklona.Models
                 optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=BazaPoklona;Trusted_Connection=True;");
             }
         }
-
+        // Data annotation ne radi, koristio je FLUENT API
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Croatian_CI_AS");
