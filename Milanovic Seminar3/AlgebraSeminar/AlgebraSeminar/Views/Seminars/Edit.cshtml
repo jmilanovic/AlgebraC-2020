@@ -29,14 +29,25 @@
                 <span asp-validation-for="Datum" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Popunjen" class="control-label"> </label>
-                <input asp-for="Popunjen" class="form-control" />
-                <span asp-validation-for="Popunjen" class="text-danger"></span>
+                <label asp-for="Datum" class="control-label"></label>
+                <input asp-for="Datum" class="form-control" />
+                <span asp-validation-for="Datum" class="text-danger"></span>
             </div>
+
+            <div class="form-group form-check">
+
+                <input asp-for="Popunjen" type="checkbox" class="form-check-input" id="Popunjen">
+                <label class="form-check-label" for="Popunjen"> Popunjen</label>
+            </div>
+          
+  
+
+
             <div class="form-group">
                 <label asp-for="Predavac" class="control-label"></label>
                 <input asp-for="Predavac" class="form-control" />
                 <span asp-validation-for="Predavac" class="text-danger"></span>
+
             </div>
             <div class="form-group">
                 <input type="submit" value="Spremi" class="btn btn-primary" />

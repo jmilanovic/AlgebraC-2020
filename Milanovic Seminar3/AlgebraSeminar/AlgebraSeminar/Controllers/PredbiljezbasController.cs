@@ -92,28 +92,31 @@ namespace AlgebraSeminar.Controllers
             {
                 return NotFound();
             }
-            
+
+            var tecaj=await _context.Predbiljezbas.OrderBy(i => i.IdSeminar == id).ToListAsync();
             ViewData["IdSeminar"] = new SelectList(_context.Seminars, "IdSeminar", "Naziv");
-            var seminar_naziv2 = await _context.Seminars.OrderByDescending(i => i.IdSeminar == id).ToListAsync();
-            ViewData["program"] = seminar_naziv2.Where(x => x.IdSeminar == id);
-            foreach (var item in seminar_naziv2.Where(x => x.IdSeminar == id))
+            var seminar_naziv2 = await _context.Seminars.OrderByDescending(i => i.IdSeminar == 12).ToListAsync();
+            ViewData["program"] = seminar_naziv2.Where(x => x.IdSeminar == 12);
+            foreach (var item in seminar_naziv2.Where(x => x.IdSeminar == 12))
             {
-                if (item.IdSeminar == id)
+                if (item.IdSeminar == 12)
                 {
                     ViewData["program"] = item.Naziv.ToString();
-                    ViewData["ID"] = id;
                 }
                 else { ViewData["program"] = ""; }
             }
 
-           var predbiljezba = await _context.Predbiljezbas.FindAsync(id);
-           if (predbiljezba == null)
+            var predbiljezba = await _context.Predbiljezbas.FindAsync(id);
+            if (predbiljezba == null)
             {
                 return NotFound();
             }
-            
+
             ViewData["IdSeminar"] = new SelectList(_context.Seminars, "IdSeminar", "Naziv", predbiljezba.IdSeminar);
             return View(predbiljezba);
+
+
+
         }
 
         // POST: Predbiljezbas/Edit/5
@@ -193,14 +196,9 @@ namespace AlgebraSeminar.Controllers
             AlgebraContext sd = new AlgebraContext();
             List<Predbiljezba> predbiljezba = sd.Predbiljezbas.ToList();
             List<Seminar> seminar = sd.Seminars.ToList();
-           // var unos = from s in predbiljezba
-           //            join st in seminar on s.IdSeminar equals st.IdSeminar into st2
-           //            from st in st2.DefaultIfEmpty()
-           //            select new UnosViewModel { predbiljezbaVm = s, seminarVm = st };
+       
 
             var unos = from s in seminar
-                       //join st in seminar on s.IdSeminar equals st.IdSeminar into st2
-                       //from st in st2.DefaultIfEmpty()
                        select new UnosViewModel { seminarVm = s };
             //Pretrazivanje
             if (pretrazi != null)
@@ -220,23 +218,54 @@ namespace AlgebraSeminar.Controllers
             List<Predbiljezba> predbiljezba = sd.Predbiljezbas.ToList();
             List<Seminar> seminar = sd.Seminars.ToList();
 
-             var unos = from s in predbiljezba
-                        join st in seminar on s.IdSeminar equals st.IdSeminar into st2
-                        from st in st2.DefaultIfEmpty()
-                        select new UnosViewModel { predbiljezbaVm = s, seminarVm = st };
+            var seminar1 = _context.Seminars.ToList();
+            var predbiljezba1 = _context.Predbiljezbas.ToList();
 
+            var unos = from s in predbiljezba
+                       join st in seminar on s.IdSeminar equals st.IdSeminar into st2
+                       from st in st2.DefaultIfEmpty()
+                       select new UnosViewModel
+                       {
+                           Naziv = st.Naziv,
+                           Ime = s.Ime,
+                           Prezime = s.Prezime,
+                           Datum = s.Datum,
+                           Adresa = s.Adresa,
+                           Email = s.Email,
+                           Telefon = s.Telefon,
+                           Status = s.Status,
+                           IdPredbiljezba = s.IdPredbiljezba,
+                           IdSeminar=s.IdSeminar
+
+                       };
             //Pretrazivanje
             if (pretrazi != null)
             {
-                var seminar_trazenje = from m in seminar
-                                           //select m;
-                                       select new UnosViewModel { seminarVm = m };
+                var trazenje = from s in predbiljezba
+                               join st in seminar on s.IdSeminar equals st.IdSeminar into st2
+                               from st in st2.DefaultIfEmpty()
+                               select new UnosViewModel
+                               {
+                                   Naziv = st.Naziv,
+                                   Ime = s.Ime,
+                                   Prezime = s.Prezime,
+                                   Datum = s.Datum,
+                                   Adresa = s.Adresa,
+                                   Email = s.Email,
+                                   Telefon = s.Telefon,
+                                   Status = s.Status,
+                                   IdPredbiljezba = s.IdPredbiljezba,
+                                   IdSeminar = s.IdSeminar
 
-                return View(seminar_trazenje.Where(x => x.seminarVm.Naziv == pretrazi || pretrazi == null).ToList());
+                               };
 
+                return View(trazenje.Where(x => x.Naziv == pretrazi || pretrazi == null).ToList());
             }
             return View(unos);
         }
 
+
     }
+
 }
+

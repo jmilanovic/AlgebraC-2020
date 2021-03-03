@@ -18,13 +18,13 @@ namespace AlgebraSeminar.Models
         }
      
         public int IdSeminar { get; set; }
-        public string? Naziv { get; set; }
-        public string? Opis { get; set; }
+        public string Naziv { get; set; }
+        public string Opis { get; set; }
         
         [DataType(DataType.Date)]
-        public DateTime? Datum { get; set; }
-        public bool? Popunjen { get; set; }
-        public string? Predavac { get; set; }
+        public DateTime Datum { get; set; }
+        public bool Popunjen { get; set; }
+        public string Predavac { get; set; }
 
         public virtual ICollection<Predbiljezba> Predbiljezbas { get; set; }
 

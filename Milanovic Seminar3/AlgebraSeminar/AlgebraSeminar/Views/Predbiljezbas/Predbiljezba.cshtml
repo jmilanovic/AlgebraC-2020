@@ -58,13 +58,13 @@
 
             <a class="button" style="text-decoration:none" href="\Predbiljezbas\Predbiljezba">Predbiljezba </a>
             <a class="button" style="text-decoration:none" href="\Seminars\Seminari">Seminari </a>
-            <a class="button" style="text-decoration:none" href="\Predbiljezbas\Predbiljezbe">Predbiljezbe </a>
+            <a class="button" style="text-decoration:none" href="\Predbiljezbas\Predbiljezbe">Predbiljezbe</a>
 
         </div>
     </div>
 
     <p>
-        @using (Html.BeginForm("Predbiljezbe", "Predbiljezbas", FormMethod.Get))
+        @using (Html.BeginForm("Predbiljezba", "Predbiljezbas", FormMethod.Get))
         {
             <b>Pretraži naziv:</b>
             @Html.TextBox("pretrazi") <input type="submit" value="Pretrazi" />
@@ -89,16 +89,11 @@
 
     <table style="width:100%">
         <tr>
-            
             <td></td>
-            <td>Seminar</td>
-            <td>Ime</td>
-            <td>Prezime</td>
+            <td>Naziv</td>
+            <td>Opis</td>
             <td>Datum</td>
-            <td>Adresa</td>
-            <td>Email</td>
-            <td>Telefon</td>
-            <td>Status</td>
+            <td>Predavac</td>
 
 
             @foreach (var item in Model)
@@ -106,16 +101,12 @@
         <tr>
 
             <td>
-                <a asp-action="Edit" asp-route-id="@item.predbiljezbaVm.IdPredbiljezba">Odaberi</a>
+                <a asp-action="Create" asp-route-id="@item.seminarVm.IdSeminar">Odaberi</a>
             </td>
             <td>@item.seminarVm.Naziv</td>
-            <td>@item.predbiljezbaVm.Ime</td>
-            <td>@item.predbiljezbaVm.Prezime</td>
-            <td>@item.predbiljezbaVm.Datum</td>
-            <td>@item.predbiljezbaVm.Adresa</td>
-            <td>@item.predbiljezbaVm.Email</td>
-            <td>@item.predbiljezbaVm.Telefon</td>
-            <td>@item.predbiljezbaVm.Status</td>
+            <td>@item.seminarVm.Opis</td>
+            <td>@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.seminarVm.Datum))</td>
+            <td>@item.seminarVm.Predavac</td>
         </tr>
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
@@ -12,6 +13,7 @@ namespace AlgebraSeminar.Models
     {
         
         public int IdPredbiljezba { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime Datum { get; set; }
         public string Ime { get; set; }
