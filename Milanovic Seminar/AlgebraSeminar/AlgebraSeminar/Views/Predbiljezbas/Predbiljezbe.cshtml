@@ -1,0 +1,126 @@
+﻿
+
+@model IEnumerable<AlgebraSeminar.ViewModel.UnosViewModel>
+
+
+
+<head>
+    <title>CSS Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Style the header */
+
+    </style>
+
+
+
+</head>
+<body>
+
+    <div class="menu" style="background-color:Black;">
+        <div class="wrapper">
+
+            <style>
+                .button {
+                    display: inline-block;
+                    padding: 10px 10px;
+                    text-align: center;
+                    text-decoration: none;
+                    color: white;
+                    background-color: black;
+                    border-radius: 1px;
+                    outline: none;
+                }
+
+                    .button:hover {
+                        background-color: white
+                    }
+
+                    .button:active {
+                        display: inline-block;
+                        padding: 10px 10px;
+                        text-align: center;
+                        text-decoration: none;
+                        color: black;
+                        background-color: white;
+                        border-radius: 6px;
+                    }
+            </style>
+
+            <a class="button" style="text-decoration:none" href="\Predbiljezbas\Predbiljezba">Predbiljezba </a>
+            <a class="button" style="text-decoration:none" href="\Seminars\Seminari">Seminari </a>
+            <a class="button" style="text-decoration:none" href="\Predbiljezbas\Predbiljezbe">Predbiljezbe </a>
+
+        </div>
+    </div>
+
+    <p>
+        @using (Html.BeginForm("Predbiljezbe", "Predbiljezbas", FormMethod.Get))
+        {
+            <b>Pretraži naziv:</b>
+            @Html.TextBox("pretrazi") <input type="submit" value="Pretrazi" />
+        }
+    </p>
+
+    <br />
+    <h6>Popis seminara koji se održavaju u Algebri:</h6>
+    <br />
+
+    <style>
+        table, th, td {
+            border: 1px solid gray;
+            text-align: center;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+    <table style="width:100%">
+        <tr>
+            
+            <td></td>
+            <td>Seminar</td>
+            <td>Ime</td>
+            <td>Prezime</td>
+            <td>Datum</td>
+            <td>Adresa</td>
+            <td>Email</td>
+            <td>Telefon</td>
+            <td>Status</td>
+
+
+            @foreach (var item in Model)
+            {
+        <tr>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.predbiljezbaVm.IdPredbiljezba">Odaberi</a>
+            </td>
+            <td>@item.seminarVm.Naziv</td>
+            <td>@item.predbiljezbaVm.Ime</td>
+            <td>@item.predbiljezbaVm.Prezime</td>
+            <td>@item.predbiljezbaVm.Datum</td>
+            <td>@item.predbiljezbaVm.Adresa</td>
+            <td>@item.predbiljezbaVm.Email</td>
+            <td>@item.predbiljezbaVm.Telefon</td>
+            <td>@item.predbiljezbaVm.Status</td>
+        </tr>
+        }
+
+
+
+        </table>
+
+    </body>
